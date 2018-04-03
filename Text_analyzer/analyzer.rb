@@ -1,5 +1,5 @@
 # load file and count lines
-lines = File.readlines("sample_text.txt")
+lines = File.readlines(ARGV[0])
 line_count = lines.size
 text = lines.join
 puts "#{line_count} lines"
@@ -27,3 +27,11 @@ puts "#{paragraph_count} paragraphs"
 
 puts "#{sentence_count / paragraph_count} sentences per paragraph (average)"
 puts "#{word_count / sentence_count} words per sentence (average)"
+
+# create a list/array of stop words
+stop_words = %w{the a by on for of are with just but and to the my I has some in}
+words = text.scan(/\w+/)
+# find ratio of useful words
+key_words = words.select { |word| stop_words.include?(word) }
+ratio_useful = ((key_words.length.to_f/ words.length.to_f)*100).to_i
+puts "Percentage of useful Words : #{ratio_useful}%"
