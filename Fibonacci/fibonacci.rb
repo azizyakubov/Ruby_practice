@@ -24,3 +24,13 @@ def fibs_rec (n, fib = [0,1])
 end
 
 puts fibs_rec (10)
+
+# If you want to just display the nth value in the sequence
+
+def show_fib(n)
+  return 0 if n == 0
+  return 1 if n == 1
+  show_fib(n-1) + show_fib(n-2)
+end
+
+puts show_fib(10)
